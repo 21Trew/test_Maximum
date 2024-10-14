@@ -1,33 +1,35 @@
-import { useCarsTableContext } from "./context/useCarsTableContext";
-import { LoadingSymbol } from "./utils/Loading";
+import React from 'react';
+import { Space, Spin } from 'antd';
+
+import Card from "./utils/Card";
 import SelectMark from "./SelectMark";
 import SelectModel from "./SelectModel";
+import { useCarsTableContext } from "./context/useCarsTableContext";
 
 export default function SettingsCard() {
   const { marksAndCount, models } = useCarsTableContext();
   
   return (
-    <div className="mt-10 flex justify-center p-6">
-      <div className="card w-full bg-white shadow-xl">
-        <div className="card-body">
-          <div className="card-actions justify-start">
-            {!!marksAndCount ? (
-              <SelectMark />
-            ) : (
-              <div>
-                Загрузка марок автомобилей... <LoadingSymbol />
-              </div>
-            )}
-          </div>
-          {!!models ? (
-            <SelectModel />
-          ) : (
-            <div>
-              Загрузка моделей... <LoadingSymbol />
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+    <Card InnerPosition="center">
+      <Space direction="vertical" size="middle">
+        {marksAndCount ? (
+          <SelectMark />
+        ) : (
+          <Space>
+            Загрузка марок автомобилей...
+            <Spin size="small" />
+          </Space>
+        )}
+        
+        {models ? (
+          <SelectModel />
+        ) : (
+          <Space>
+            Загрузка моделей...
+            <Spin size="small" />
+          </Space>
+        )}
+      </Space>
+    </Card>
   );
 }

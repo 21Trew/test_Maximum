@@ -1,38 +1,30 @@
 import React from "react";
-import ReactPaginate from "react-paginate";
+import { Pagination } from "antd";
 import { useCarsTableContext } from "./context/useCarsTableContext";
 
-export default function Pagination() {
+export default function AntDPagination() {
   const { countCars, setOffset, limit } = useCarsTableContext();
-
-  const items = Array.from(Array(countCars).keys());
-
-  const pageCount = Math.ceil(items.length / limit);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handlePageClick = (event: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    const newOffset = (event.selected * limit) % items.length;
-
+  
+  const handlePageChange = (page: number) => {
+    const newOffset = (page - 1) * limit;
     setOffset(newOffset);
   };
-
+  
+  const locale = {
+    jump_to: 'Перейти к',
+    page: 'странице',
+  };
+  
   return (
-    <div>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageCount={pageCount}
-        previousLabel="<"
-        containerClassName="join"
-        pageLinkClassName="join-item btn"
-        previousLinkClassName="join-item btn"
-        nextLinkClassName="join-item btn"
-        breakLinkClassName="join-item btn"
-        activeLinkClassName="join-item btn btn-active"
-        disabledClassName="btn-disabled"
+    <>
+      <Pagination
+        total={countCars}
+        pageSize={limit}
+        onChange={handlePageChange}
+        showSizeChanger={false}
+        showQuickJumper
+        locale={locale}
       />
-    </div>
+    </>
   );
 }

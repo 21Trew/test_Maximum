@@ -1,29 +1,23 @@
-import type { ChildrenProps } from "~/server/validator/interfaces/interfaces.tableCarUi";
+import React from 'react';
+import { Card as AntCard, Space, Row, Col } from 'antd';
 
-interface CardProps extends ChildrenProps {
+interface CardProps {
+  children: React.ReactNode;
   InnerPosition: "center" | "start";
   stepChildren?: React.ReactNode;
 }
 
-export default function Card({
-  children,
-  InnerPosition,
-  stepChildren,
-}: CardProps) {
+export default function Card({ children, stepChildren }: CardProps) {
   return (
-    <div className="mt-10 flex justify-center p-6">
-      <div
-        className="card w-full bg-white shadow-xl"
-        style={{ boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.3)" }}
-      >
-        <div className="card-body">
+    <Row justify="center" style={{ padding: 24 }}>
+      <Col span={24}>
+        <AntCard style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)" }} >
           {children}
-
-          <div className={`card-actions justify-${InnerPosition}`}>
+          <Space style={{ display: 'flex', marginTop: '20px' }} >
             {stepChildren}
-          </div>
-        </div>
-      </div>
-    </div>
+          </Space>
+        </AntCard>
+      </Col>
+    </Row>
   );
 }

@@ -4,7 +4,7 @@ import type { CarsTableContextProps } from "~/server/validator/interfaces/interf
 
 import { CarsTableContext } from "./useCarsTableContext";
 import { api } from "~/utils/api";
-import { LIMITS } from "~/CONST";
+import { LIMITS } from "~/constants";
 
 interface CarsTableProps {
   children: React.ReactNode;

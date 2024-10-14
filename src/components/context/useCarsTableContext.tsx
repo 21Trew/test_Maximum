@@ -9,7 +9,7 @@ export const useCarsTableContext = () => {
   const context = React.useContext(CarsTableContext);
 
   if (!context) {
-    throw new Error("useCarsTableContext не должен здесь находится!");
+    throw new Error("useCarsTableContext не должен здесь находиться!");
   }
 
   return context;
