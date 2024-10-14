@@ -5,7 +5,7 @@ import SelectModel from "./SelectModel";
 
 export default function SettingsCard() {
   const { marksAndCount, models } = useCarsTableContext();
-
+  
   return (
     <div className="mt-10 flex justify-center p-6">
       <div className="card w-full bg-white shadow-xl">
