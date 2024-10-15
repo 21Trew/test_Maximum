@@ -8,7 +8,7 @@ const { Option } = Select;
 export default function SelectModel() {
   const { models, selectedModels, setSelectedModels } = useCarsTableContext();
   
-  const handleChange = (value) => {
+  const handleChange = (value: (string | null)[]) => {
     setSelectedModels(value);
   };
   
