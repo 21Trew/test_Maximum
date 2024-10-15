@@ -1,7 +1,7 @@
 import modification from "./components/func/modification";
 import formatDate from "./components/func/formatDate";
-import { z } from "zod";
-import type  { CarSchema } from './server/validator/schema/getCarsFromModelsAndMarks';
+import type { z } from "zod";
+import type { CarSchema } from './server/validator/schema/getCarsFromModelsAndMarks';
 
 export const LIMITS = [10, 15, 20];
 
