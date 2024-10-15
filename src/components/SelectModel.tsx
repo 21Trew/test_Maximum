@@ -12,9 +12,13 @@ export default function SelectModel() {
     setSelectedModels(value);
   };
   
-  const tagRender = (props) => {
+  const tagRender = (props: {
+      label: React.ReactNode;
+      closable: boolean;
+      onClose: () => void;
+    }) => {
     const { label, closable, onClose } = props;
-    const onPreventMouseDown = (event) => {
+    const onPreventMouseDown = (event: React.MouseEvent) => {
       event.preventDefault();
       event.stopPropagation();
     };
