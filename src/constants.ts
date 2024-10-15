@@ -21,7 +21,7 @@ export const COLUMNS = [
     title: 'Модификация',
     dataIndex: 'modification',
     key: 'modification',
-    render: (_: any, record: z.infer<typeof CarSchema>) => modification(record)
+    render: (_: void, record: z.infer<typeof CarSchema>) => modification(record)
   },
   {
     title: 'Комплектация',
